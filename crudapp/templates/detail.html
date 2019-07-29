@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <br>
+        <h1>상세 페이지 입니다.</h1>
+        <br>
+        <h2>{{ blog.title }}</h2>
+        <p>{{ blog.pub_date }}</p>
+        <p>{{ blog.body }}</p>
+
+        <div>
+            <form action="{% url 'edit' blog.id %}" method="POST">
+                {% csrf_token %}
+                <input class="btn btn-dark" type="submit" value="수정">
+            </form>
+        
+            <form action="{% url 'delete' blog.id %}" method="POST">
+                {% csrf_token %}
+                <input class="btn btn-dark" type="submit" value="삭제">
+            </form>
+        </div>
+
+        <a href="{% url 'home' %}"> 돌아가기</a>
+    </div>
+
+
+{% endblock %}
